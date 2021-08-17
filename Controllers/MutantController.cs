@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mutantes.Models;
 using Mutantes.Service;
+using System;
 
 namespace Mutantes.Controllers
 {
@@ -13,14 +14,29 @@ namespace Mutantes.Controllers
         [HttpPost]
         public ActionResult<bool> Mutant([FromBody]DnaModel dnaModel)
         {
-            return Ok(mutantService.CheckDna(dnaModel.dna));
+            try
+            {
+                return Ok(mutantService.CheckDna(dnaModel.dna));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [Route("statistics")]
         [HttpGet]
         public ActionResult<bool> Statistics()
         {
-            return Ok(mutantService.getStatistics());
+            try
+            {
+                return Ok(mutantService.getStatistics());
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
     }
 }
