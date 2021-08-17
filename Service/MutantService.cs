@@ -38,8 +38,9 @@ namespace Mutantes.Service
         {
             Statistics statistics = new Statistics();
             List<Dna> list = repository.findAll();
-            statistics.Mutants = list.Where(x => x.isMutant).Count();
-            statistics.NormalPeople = list.Where(x => !x.isMutant).Count();
+            statistics.count_mutant_dna = list.Where(x => x.isMutant).Count();
+            statistics.count_human_dna = list.Where(x => !x.isMutant).Count();
+            statistics.ratio = statistics.count_mutant_dna / statistics.count_human_dna;
             return statistics;
         }
 

@@ -2,7 +2,8 @@
 {
     public class Statistics
     {
-        public int Mutants { get; set; }
-        public int NormalPeople { get; set; }
+        public int count_mutant_dna { get; set; }
+        public int count_human_dna { get; set; }
+        public int ratio { get; set; }
     }
 }
